@@ -105,17 +105,18 @@ class _LoginPageState extends State<LoginPage> {
     if (!isKeyboardOpen) {
       return Column(
         children: <Widget>[
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(top: 74),
           ),
-          SizedBox(
-            width: 60,
-            height: 60,
-            child: Image(
-              image: AssetImage("images/logo.png"),
+          const SizedBox(
+            width: 100,
+            height: 100,
+            child: Icon(
+               Icons.login,
+              size: 100,
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(top: 20),
           ),
           Text(

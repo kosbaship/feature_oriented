@@ -1,6 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:feature_oriented/core/network/network_info.dart';
-import 'package:feature_oriented/core/network/rest_clint_servce_dio.dart';
+import 'package:feature_oriented/core/network/rest_client_service.dart';
 import 'package:feature_oriented/feature/login/data/datasources/login_remote_datasource.dart';
 import 'package:feature_oriented/feature/login/data/repositories/login_repository_impl.dart';
 import 'package:feature_oriented/feature/login/domain/repositories/login_repository.dart';
@@ -37,6 +37,9 @@ Future<void> configureInjection() async {
       restClientService: sl(),
     ),
   );
+  sl.registerLazySingleton<RestClientService>(
+        () => RestClientServiceImpl(),
+  );
 
   //Core
   sl.registerLazySingleton<NetworkInfo>(
@@ -45,6 +48,4 @@ Future<void> configureInjection() async {
 
   //External
   sl.registerLazySingleton(() => Connectivity().checkConnectivity());
-
-  sl.registerLazySingleton(() => RestClientServiceImpl());
 }
