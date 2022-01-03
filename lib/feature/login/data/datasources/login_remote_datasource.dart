@@ -23,6 +23,6 @@ class LoginRemoteDataSourceImpl extends LoginRemoteDataSource {
     if (response.statusCode != 200) {
       throw ServerException();
     }
-    return LoginModel.fromJson(response.data);
+    return Login.fromJson(response.data);
   }
 }

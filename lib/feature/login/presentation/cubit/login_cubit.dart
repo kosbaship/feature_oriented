@@ -13,10 +13,10 @@ class LoginCubit extends Cubit<LoginState> {
 
   final LoginUser loginUser;
 
-    void signInUser({required LoginParams inputs}) async {
+  void signInUser({required email, required password}) async {
     emit(LoadingState());
-    final result = await loginUser(
-        LoginParams(email: inputs.email, password: inputs.password));
+    final result =
+        await loginUser(LoginParams(email: email, password: password));
     result.fold((failure) {
       if (failure is NoConnectionFailure) {
         emit(const ErrorState(message: NO_CONNECTION_ERROR));
@@ -24,8 +24,10 @@ class LoginCubit extends Cubit<LoginState> {
         emit(const ErrorState(message: LOGGING_ERROR));
       }
     }, (success) {
+      print('==============================');
+      print( success.data?.toJson().toString());
+      print('==============================');
       emit(LoggedState(login: Login(data: success.data)));
     });
   }
-
 }

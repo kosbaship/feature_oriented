@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
             width: 100,
             height: 100,
             child: Icon(
-               Icons.login,
+              Icons.login,
               size: 100,
             ),
           ),
@@ -144,33 +144,15 @@ class _LoginPageState extends State<LoginPage> {
         return currState is! LoggedState;
       },
       builder: (context, state) {
-        if (state is NotLoggedState || state is ErrorState) {
-          if (state is ErrorState) {
-            _snackBar!.hideAll();
-            _snackBar!.showErrorSnackBar(state.message);
-          }
-          return RaisedButton(
-            key: const Key("login"),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4.0),
-            ),
-            color: CustomColor.logoBlue,
-            onPressed: () => context.read<LoginCubit>().signInUser(
-                      inputs: LoginParams(
-                    email: _emailEditingController.text,
-                    password: _passwordEditingController.text,
-                  )),
-            child: Text(
-              "LOGIN",
-              style: CustomTheme.mainTheme.textTheme.button,
-            ),
-          );
-        } else if (state is LoadingState) {
-          _snackBar!.hideAll();
-          _snackBar!.showLoadingSnackBar();
-          return Container();
-        }
-        return Container();
+        return ElevatedButton(
+          onPressed: () {
+            context.read<LoginCubit>().signInUser(
+                  email: 'kosba@gmail.com',
+                  password: '123456',
+                );
+          },
+          child: const Text('Click Here'),
+        );
       },
     );
   }
