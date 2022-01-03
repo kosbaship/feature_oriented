@@ -1,6 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:feature_oriented/core/network/network_info.dart';
-import 'package:feature_oriented/core/network/rest_client_service.dart';
 import 'package:feature_oriented/core/network/rest_clint_servce_dio.dart';
 import 'package:feature_oriented/feature/login/data/datasources/login_remote_datasource.dart';
 import 'package:feature_oriented/feature/login/data/repositories/login_repository_impl.dart';
@@ -12,7 +11,7 @@ import 'package:get_it/get_it.dart';
 final sl = GetIt.instance; //sl is referred to as Service Locator
 
 //Dependency injection
-Future<void> init() async {
+Future<void> configureInjection() async {
   //Blocs
   sl.registerFactory(
         () => LoginCubit(

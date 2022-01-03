@@ -13,7 +13,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   final LoginUser loginUser;
 
-  void signInUser(LoginParams inputs) async {
+    void signInUser({required LoginParams inputs}) async {
     emit(LoadingState());
     final result = await loginUser(
         LoginParams(email: inputs.email, password: inputs.password));
